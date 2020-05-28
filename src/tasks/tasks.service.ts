@@ -39,12 +39,12 @@ export class TasksService {
         return found;
     }
 
-    // deleteTaskById( id: string ): Task {
-    //     const task = this.getTaskById( id );
-    //     this.tasks = this.tasks.filter( task => task.id !== id );
+    async deleteTaskById( id: number ): Promise<Task> {
+        const task = await this.getTaskById( id );
+        await this.taskRepository.delete(task);
 
-    //     return task;
-    // }
+        return task;
+    }
 
     createTask( createTaskDto: CreateTaskDto ): Promise<Task> {
         return this.taskRepository.createTask(createTaskDto);

@@ -19,10 +19,10 @@ export class TasksController {
         return this.taskService.getTaskById( id );
     }
 
-    // @Delete(':id')
-    // deleteTaskById( @Param('id') id: string ): Task {
-    //     return this.taskService.deleteTaskById( id );
-    // }
+    @Delete(':id')
+    deleteTaskById( @Param('id', ParseIntPipe) id: number ): Promise<Task> {
+        return this.taskService.deleteTaskById( id );
+    }
 
     @Post()
     @UsePipes(ValidationPipe)
