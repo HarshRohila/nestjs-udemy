@@ -46,20 +46,9 @@ export class TasksService {
     //     return task;
     // }
 
-    // createTask( createTaskDto: CreateTaskDto ): Task {
-    //     const { title, description } = createTaskDto;
-
-    //     const task: Task = {
-    //         id: uuid(),
-    //         title,
-    //         description,
-    //         status: TaskStatus.OPEN,
-    //     }
-
-    //     this.tasks = [...this.tasks, task];
-
-    //     return task;
-    // }
+    createTask( createTaskDto: CreateTaskDto ): Promise<Task> {
+        return this.taskRepository.createTask(createTaskDto);
+    }
 
     // updateStatus( id: string, status: TaskStatus ): Task {
     //     let updatedTask = null;
